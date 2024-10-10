@@ -153,30 +153,27 @@ const mealsTotalCost = calculateTotalCost("meals");
 
     return (
         <>
-            <navbar className="navbar_event_conference">
-                <div className="company_logo">Conference Expense Planner</div>
-                <div className="left_navbar">
-                    <div className="nav_links">
-                        <a href="#venue" onClick={() => navigateToProducts("#venue")} >Venue</a>
-                        <a href="#addons" onClick={() => navigateToProducts('#addons')}>Add-ons</a>
-                        <a href="#meals" onClick={() => navigateToProducts('#meals')}>Meals</a>
-                    </div>
-                    <button className="details_button" onClick={() => setShowItems(!showItems)}>
-                        Show Details
-                    </button>
-                </div>
-            </navbar>
-            <div className="main_container">
-                {!showItems
+          <navbar className="navbar_event_conference">
+            <div className="company_logo">Conference Expense Planner</div>
+            <div className="left_navbar">
+              <div className="nav_links">
+                <a href="#venue" onClick={() => navigateToProducts("#venue")} >Venue</a>
+                <a href="#addons" onClick={() => navigateToProducts('#addons')}>Add-ons</a>
+                <a href="#meals" onClick={() => navigateToProducts('#meals')}>Meals</a>
+              </div>
+              <button className="details_button" onClick={() => setShowItems(!showItems)}>Show Details</button>
+            </div>
+          </navbar>
+          <div className="main_container">
+            {!showItems
                     ?
                     (
                         <div className="items-information">
-                             <div id="venue" className="venue_container container_main">
-        <div className="text">
- 
-          <h1>Venue Room Selection</h1>
-        </div>
-        <div className="venue_selection">
+                          <div id="venue" className="venue_container container_main">
+                            <div className="text">
+                              <h1>Venue Room Selection</h1>
+                          </div>
+                        <div className="venue_selection">
           {venueItems.map((item, index) => (
             <div className="venue_main" key={index}>
               <div className="img">
