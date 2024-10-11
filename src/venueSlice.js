@@ -1,23 +1,12 @@
 // venueSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-// Let's step through the code in the venueSlide.js file. It contains code to slice the Redux state related to venue selection using createSlice from @reduxjs/toolkit.
+// [T3] 1. Let's step through the code in the venueSlide.js file. It contains code to slice the Redux state related to venue selection 
+// using createSlice from @reduxjs/toolkit. The initial state consists of an array of venue objects, each representing a rentable room 
+// in the venue. A venue object has properties such as the thumbnail image, name, cost, and quantity.
 
-// The initial state consists of an array of venue objects, each representing a rentable room in the venue. A venue object has properties such as the thumbnail image, name, cost, and quantity.
-
-// The venueSlice.js file includes reducer functions incrementQuantity and decrementQuantity to manage the number of venue items in the state.
+// [T3] 2. The venueSlice.js file includes reducer functions incrementQuantity and decrementQuantity to manage the number of venue items in the state.
 // Note: On the last page of this lab, we provide you with the links for images from Pixabay, with appropriate citations, or you may find your own.
-
-// incrementQuantity():
-//   This function handles incrementing the quantity of a venue item in the state. It receives an action containing the index of the item to be incremented.
-//   It first checks if the item exists in the state at the provided index. If the item exists and it's an Auditorium Hall with a quantity greater than or equal to 3, it returns early without modifying the state.
-//   Otherwise, it increments the quantity of the item by one.
-
-// decrementQuantity():
-//   This function handles decrementing the quantity of a venue item in the state. It receives an action containing the index of the item to be decremented.
-//   It first checks if the item exists in the state at the provided index and if its quantity is greater than 0.
-//   If both conditions are met, the quantity of the item will be decreased by one.
-
 
 export const venueSlice = createSlice({
   name: "venue",
@@ -55,7 +44,10 @@ export const venueSlice = createSlice({
   
   ],
   reducers: {
-   
+    //  [T3] 3. incrementQuantity():
+    //  This function handles incrementing the quantity of a venue item in the state. It receives an action containing the index of the item to be incremented.
+    //  It first checks if the item exists in the state at the provided index. If the item exists and it's an Auditorium Hall with a quantity greater than or equal to 3, it returns early without modifying the state.
+    //  Otherwise, it increments the quantity of the item by one.
     incrementQuantity: (state, action) => {
       const { payload: index } = action;
       if (state[index]) {
@@ -64,6 +56,10 @@ export const venueSlice = createSlice({
         state[index].quantity++;
       }
     },
+    //  [T3] 4. decrementQuantity():
+    //  This function handles decrementing the quantity of a venue item in the state. It receives an action containing the index of the item to be decremented.
+    //  It first checks if the item exists in the state at the provided index and if its quantity is greater than 0.
+    //  If both conditions are met, the quantity of the item will be decreased by one.
     decrementQuantity: (state, action) => {
       const { payload: index } = action;
       if (state[index] && state[index].quantity > 0) {

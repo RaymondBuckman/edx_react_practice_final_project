@@ -1,4 +1,9 @@
-    import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+
+// Now, it's your turn to write some code. In this section, you will create the add-ons section. To begin, you need to first create 
+// logic within avSlice.js under the src folder. Initialize the initialState array variable with objects to provide a data structure. 
+// Note that you need to add your own images and the appropriate paths to them in the data below. Links to sample images are provided 
+// in Task 1: Setting up the environment. Include the code below within initialState of avSlice.js.
 
 export const avSlice = createSlice({
   name: "av",
@@ -36,21 +41,34 @@ export const avSlice = createSlice({
         },
   ],
 
+    // Increment and decrement
 
-  reducers: {
-    incrementAvQuantity: (state, action) => {
-        const item = state[action.payload];
-        if (item) {
-            item.quantity++;
-        }
+    // Now, you need to create the logic for incrementAvQuantity() and decrementAvQuantity() functions.
+
+    reducers: {
+        // The incrementAvQuantity() reducer function increments the quantity of a specific item in the state.
+        // It takes two parameters: state and action.
+        // The action.payload object contains the identifier of the item to increment.
+        // The reducer retrieves the item from the state using state[action.payload].
+        // If the item exists, it increments its quantity property by 1.
+        incrementAvQuantity: (state, action) => {
+            const item = state[action.payload];
+            if (item) {
+                item.quantity++;
+            }
+        },
+        
+        // The decrementAvQuantity() reducer function decrements the quantity of a specific item in the state.
+        // Similar to incrementAvQuantity(), it takes two parameters: state and action.
+        // The action.payload object contains the item identifier to decrement. - It's reducer retrieves the item from the state using state[action.payload].
+        // If the item exists and its quantity is greater than 0, it decrements its quantity property by 1, ensuring the quantity doesn't drop below 0 and indicates no more available items.
+        decrementAvQuantity: (state, action) => {
+            const item = state[action.payload];
+            if (item && item.quantity > 0) {
+                item.quantity--;
+            }
+        },
     },
-    decrementAvQuantity: (state, action) => {
-        const item = state[action.payload];
-        if (item && item.quantity > 0) {
-            item.quantity--;
-        }
-    },
-  },
 });
 
 export const { incrementAvQuantity, decrementAvQuantity } = avSlice.actions;
